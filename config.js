@@ -63,15 +63,15 @@ global.ppulsa = '-' //Nomor SimCard Yang Kamu Pake
 global.psaweria = 'https://saweria.com/XiaoYan021' //Link Saweriamu Kalo Nggada Ketik - aja
 
 /*============== NOMOR ==============*/
-global.nomorbot = '-' //Nomor Bot
-global.nomorown = '-' //Nomor Owner
+global.nomorbot = '6285766450735' //Nomor Bot
+global.nomorown = '6285766450735' //Nomor Owner
 global.namebot = 'Elaina BOT' //Nama Bot
-global.nameown = '-' // Nama Owner
+global.nameown = '6285766450735' // Nama Owner
 
 
 /*============== STAFF ==============*/
 global.owner = [
-  ['-', 'Developer Owner', true] //Ganti jd nomormu sama Namamu
+  ['6285766450735', 'Developer Owner', true] //Ganti jd nomormu sama Namamu
   // [number, dia creator/owner?, dia developer?] ex= [62123456789, "siapa kek", false]
 ] // Put your number here
 global.mods = [] // Want some help?
@@ -94,7 +94,7 @@ global.APIKeys = { // APIKey Here
 // Kata APIKEY itu isi dengan apikeymu, dengan beli ke website itu
 
 /*============== WATERMARK ==============*/
-global.wm = '                「 Elaina 𝙱𝙾𝚃 汉  」' //Main Watermark
+global.wm = 'Elaina 𝙱𝙾𝚃 汉' //Main Watermark
 global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘Elaina - Chan˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
 global.wm3 = '⫹⫺ Elaina 𝙱𝙾𝚃'
 global.namedoc = 'Elaina`s Bot' //Main Name Menu Document
