@@ -40,14 +40,14 @@ import readline from 'readline'
 import { format } from 'util'
 import pino from 'pino'
 import ws from 'ws'
-import {
+const {
     useMultiFileAuthState,
     DisconnectReason,
     fetchLatestBaileysVersion, 
     makeInMemoryStore, 
     makeCacheableSignalKeyStore, 
     PHONENUMBER_MCC
-    } from '@adiwajshing/baileys'
+    } = await import('@adiwajshing/baileys') 
 import { Low, JSONFile } from 'lowdb'
 import { makeWASocket, protoType, serialize } from './lib/simple.js'
 import cloudDBAdapter from './lib/cloudDBAdapter.js'
@@ -337,6 +337,13 @@ global.reloadHandler = async function (restatConn) {
   conn.connectionUpdate = connectionUpdate.bind(global.conn)
   conn.credsUpdate = saveCreds.bind(global.conn)
 
+  conn.ev.on('call', async (call) => {
+    console.log('Panggilan diterima:', call);
+    if (call.status === 'ringing') {
+      await conn.rejectCall(call.id);
+      console.log('Panggilan ditolak');
+    }
+  })
   conn.ev.on('messages.upsert', conn.handler)
   conn.ev.on('group-participants.update', conn.participantsUpdate)
   conn.ev.on('groups.update', conn.groupsUpdate)
