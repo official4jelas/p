@@ -10,6 +10,30 @@ import fs from 'fs'
 import fetch from 'node-fetch'
 const { generateWAMessageFromContent, proto, getDevice } = (await import('@adiwajshing/baileys')).default
 
+let wib = new Intl.DateTimeFormat('id-ID', {
+  timeZone: 'Asia/Jakarta',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+}).format(new Date());
+
+let wit = new Intl.DateTimeFormat('id-ID', {
+  timeZone: 'Asia/Jayapura',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+}).format(new Date());
+
+let wita = new Intl.DateTimeFormat('id-ID', {
+  timeZone: 'Asia/Makassar',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+}).format(new Date());
+
+let gabung = `${wib} WIB\n${wita} WITA\n${wit} WIT`;
+
+
 const defaultMenu = {
   before: `
 ╭─────═[ INFO USER ]═─────⋆
@@ -26,7 +50,7 @@ const defaultMenu = {
 ⬡│☂︎ *Tanggal:* %week %weton
 ⬡│☂︎ *Date:* %date
 ⬡│☂︎ *Tanggal Islam:* %dateIslamic
-┬│☂︎ *Waktu:* ${global.gabung}
+┬│☂︎ *Waktu:* ${gabung}
 │╰────────────────···
 ┠─────═[ INFO BOT ]═─────⋆
 │╭────────────────···
@@ -156,14 +180,16 @@ let tags = {
    
 
  /**************************** TIME *********************/
- let wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+ /*
+    let wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
     let wibh = moment.tz('Asia/Jakarta').format('HH')
     let wibm = moment.tz('Asia/Jakarta').format('mm')
     let wibs = moment.tz('Asia/Jakarta').format('ss')
     let wit = moment.tz('Asia/Jayapura').format('HH:mm:ss')
     let wita = moment.tz('Asia/Makassar').format('HH:mm:ss')
     let wktuwib = `${wibh} H ${wibm} M ${wibs} S`
- 
+*/
+     
  let mode = global.opts['self'] ? 'Private' : 'Publik'
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     let { age, exp, limit, level, role, registered, money} = global.db.data.users[m.sender]
@@ -186,7 +212,7 @@ let tags = {
         premium: plugin.premium,
         enabled: !plugin.disabled,
       }
-    })
+    });
     let groups = {}
     for (let tag in tags) {
       groups[tag] = []
@@ -258,7 +284,7 @@ let tags = {
   "jpegThumbnail": fs.readFileSync('./thumbnail.jpg'),
     },
   "title": `${ucapan()}`,
-  "description": '𝗧 𝗜 𝗠 𝗘 : ' + wktuwib,
+  "description": '𝗧 𝗜 𝗠 𝗘 : ' + gabung,
   "currencyCode": "US",
   "priceAmount1000": "100",
   "retailerId": wm,
@@ -269,8 +295,11 @@ let tags = {
   }
   }
   
-    let urls = pickRandom(['https://telegra.ph/file/035e524939ab0294ba91f.jpg', 'https://telegra.ph/file/96b2275d3b14d071290bc.jpg', 'https://telegra.ph/file/2c6b7660bc6126404a9bb.jpg', 'https://telegra.ph/file/c635bf577bb9d59a3e00b.jpg', 'https://telegra.ph/file/be8dd52f6363f9e9f5a60.jpg', 'https://telegra.ph/file/02e53361b9dc946f63c8d.jpg', 'https://telegra.ph/file/298ed2f1bba17aeb64ca8.jpg', 'https://telegra.ph/file/be2a18221974147f66ea0.jpg'])
-    const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
+    let urls = pickRandom(['./thumbnail.jpg','./src/gambar/gambar1.jpg', './src/gambar/gambar2.jpg', './src/gambar/gambar3.jpg', './src/gambar/gambar4.jpg', './src/gambar/gambar5.jpg', './src/gambar/gambar6.jpg', './src/gambar/gambar7.jpg', './src/gambar/gambar8.jpg'])
+    const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/gambar/gambar9.jpg')
+
+    global.flaa = JSON.parse(fs.readFileSync('./lib/flaming.json'));
+    global.flaaa = pickRandom(global.flaa);
     
     //FAKE TROLI
 
@@ -327,13 +356,46 @@ let tags = {
     })*/
     
     //------------------ DOCUMENT
-    let d1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
-    let d2 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    let d3  = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    let d4 = 'application/pdf'
-    let d5 = 'application/vnd.android.package-archive'
-    let d6 = 'application/zip'
-    let td = `${pickRandom([d1,d2,d3,d4,d5,d6])}`
+    // let d1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+    // let d2 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    // let d3  = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    // let d4 = 'application/pdf'
+    // let d5 = 'application/vnd.android.package-archive'
+    // let d6 = 'application/zip'
+    // let td = `${pickRandom([d1,d2,d3,d4,d5,d6])}`
+
+    const tipemime = [
+      'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'application/pdf',
+      'application/vnd.android.package-archive',
+      'application/zip',
+      'application/msword',
+      'application/vnd.ms-excel',
+      'application/vnd.ms-powerpoint',
+      'audio/mpeg',
+      'audio/mp3',
+      'audio/mp4',
+      'audio/ogg',
+      'audio/wav',
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+      'image/jpg',
+      'application/x-rar-compressed',
+      'application/x-zip-compressed',
+      'application/x-7z-compressed',
+      'application/x-tar',
+      'application/x-shockwave-flash',
+      'application/json',
+      'application/xml',
+      'application/x-www-form-urlencoded',
+      'text/plain'
+    ]
+
+    let td = `${pickRandom(tipemime)}`;
     
    //~~~Source : https://github.com/Rlxfly
     //------- MENU LOCATION
